@@ -1,9 +1,8 @@
-import { Typography } from "@mui/material";
 import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
 
+import CustomTypography from "./ui/Typography";
 import useFetchData from "../hooks/useFetch";
 import type { Post } from "../types";
-import CustomTypography from "./ui/Typography";
 
 const PostList: React.FC = (): React.ReactNode => {
     const { data, loading } = useFetchData<Post[]>("https://jsonplaceholder.typicode.com/posts");

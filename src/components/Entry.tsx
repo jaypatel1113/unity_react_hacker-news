@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, TextField, Typography, Container } from "@mui/material";
+import { Container } from "@mui/material";
 
 import type { UserDetails } from "../types";
 
-import useAuth from "../hooks/useAuth";
-import useFormError from "../hooks/useFormValidate";
 import CustomInput from "./ui/Input";
 import CustomButton from "./ui/Button";
 import CustomTypography from "./ui/Typography";
+import useAuth from "../hooks/useLocalStorage";
+import useFormError from "../hooks/useFormValidate";
 
 const Entry: React.FC = () => {
     const { setAuthenticatedUser, getAuthenticatedUser } = useAuth();
