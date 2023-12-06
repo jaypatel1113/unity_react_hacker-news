@@ -7,7 +7,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import IconButton from "@mui/material/IconButton";
 
 import { DepartmentData } from "../constants";
-import type { Department } from "../types";
+import type { DepartmentType } from "../types";
 
 import CustomTypography from "./ui/Typography";
 
@@ -32,7 +32,7 @@ export default function DepartmentList() {
         setSelectedItems(newSelected);
     };
 
-    const handleExpand = (department: Department) => {
+    const handleExpand = (department: DepartmentType) => {
         setExpanded((prevExpanded) => {
             const isExpanded = prevExpanded.includes(department.department);
 
@@ -46,7 +46,7 @@ export default function DepartmentList() {
         });
     };
 
-    const handleMainCheckboxChange = (department: Department) => {
+    const handleMainCheckboxChange = (department: DepartmentType) => {
         const allSubDepartmentNames = department.sub_departments.map((sub) => sub.name);
         const isSelected = selectedItems.includes(department.department);
 
@@ -68,9 +68,9 @@ export default function DepartmentList() {
         setSelectedItems(newSelected);
     };
 
-    const isExpanded = (department: Department) => expanded.includes(department.department);
+    const isExpanded = (department: DepartmentType) => expanded.includes(department.department);
 
-    const renderDepartment = (department: Department) => (
+    const renderDepartment = (department: DepartmentType) => (
         <React.Fragment key={department.department}>
             <FormControlLabel
                 label={department.department}

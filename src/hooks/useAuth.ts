@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-import type { UserDetails } from "../types";
+import type { UserType } from "../types";
 
 // chat gpt
 const useAuth = () => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!localStorage.getItem("userDetails"));
 
     // Function to set user details in localStorage and update isAuthenticated
-    const setAuthenticatedUser = (userDetails: UserDetails) => {
+    const setAuthenticatedUser = (userDetails: UserType) => {
         localStorage.setItem("userDetails", JSON.stringify(userDetails));
         setIsAuthenticated(true);
     };
@@ -19,7 +19,7 @@ const useAuth = () => {
     };
 
     // Function to get user details from localStorage
-    const getAuthenticatedUser = (): UserDetails | null => {
+    const getAuthenticatedUser = (): UserType | null => {
         const userDetails = localStorage.getItem("userDetails");
         return userDetails ? JSON.parse(userDetails) : null;
     };

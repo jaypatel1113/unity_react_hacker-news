@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import type { UserDetails } from "../types";
+import type { UserType } from "../types";
 
 // chat gpt
 type FormErrors<T> = {
@@ -10,15 +10,15 @@ type FormErrors<T> = {
 type UseFormValidateResult<T> = {
     errors: FormErrors<T>;
     setErrors: React.Dispatch<React.SetStateAction<FormErrors<T>>>;
-    validateForm: (formData: UserDetails) => boolean;
+    validateForm: (formData: UserType) => boolean;
 };
 
 const useFormValidate = <T extends Record<string, unknown>>(): UseFormValidateResult<T> => {
     const [errors, setErrors] = useState<FormErrors<T>>({});
 
-    const validateForm = (formData: UserDetails): boolean => {
+    const validateForm = (formData: UserType): boolean => {
         let isValid = true;
-        const newErrors: FormErrors<UserDetails> = {};
+        const newErrors: FormErrors<UserType> = {};
 
         // Validate name
         if (!formData.name || formData.name.trim() === "") {

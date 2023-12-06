@@ -1,6 +1,6 @@
-import { Department } from "../types";
+import { DepartmentType } from "../types";
 
-export const DepartmentData: Department[] = [
+export const DepartmentData: DepartmentType[] = [
     {
         department: "customer_service",
         sub_departments: [

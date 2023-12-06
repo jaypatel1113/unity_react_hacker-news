@@ -1,11 +1,11 @@
-import { Department } from "./department";
-import { Post } from "./post";
+import { DepartmentType } from "./department";
+import { PostType } from "./post";
 import { ToastOptionsType } from "./toast";
-import { UserDetails } from "./user";
+import { UserType } from "./user";
 
 export type {
-    Department,
-    Post,
+    DepartmentType,
+    PostType,
     ToastOptionsType,
-    UserDetails,
+    UserType,
 }

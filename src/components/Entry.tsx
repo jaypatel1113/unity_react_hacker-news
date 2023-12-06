@@ -4,7 +4,7 @@ import { Container } from "@mui/material";
 
 import useAuth from "../hooks/useAuth";
 import useFormError from "../hooks/useFormValidate";
-import type { UserDetails } from "../types";
+import type { UserType } from "../types";
 
 import CustomButton from "./ui/Button";
 import CustomInput from "./ui/Input";
@@ -14,9 +14,9 @@ const Entry: React.FC = () => {
     const { setAuthenticatedUser, getAuthenticatedUser } = useAuth();
     const navigate = useNavigate();
 
-    const { errors, setErrors, validateForm } = useFormError<UserDetails>();
+    const { errors, setErrors, validateForm } = useFormError<UserType>();
 
-    const [formData, setFormData] = useState<UserDetails>({
+    const [formData, setFormData] = useState<UserType>({
         email: "",
         name: "",
         phoneNumber: "",

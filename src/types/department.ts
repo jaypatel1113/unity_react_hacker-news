@@ -2,7 +2,7 @@ interface SubDepartment {
     name: string;
 }
 
-export interface Department {
+export interface DepartmentType {
     department: string;
     sub_departments: SubDepartment[];
 }
