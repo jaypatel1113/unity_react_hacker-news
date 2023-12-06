@@ -1,5 +1,4 @@
 const Data: React.FC = (): React.ReactNode => {
-
     return (
         <section>data</section>
     );

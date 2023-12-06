@@ -1,11 +1,8 @@
 import { useState } from "react";
 
-export type UserDetails = {
-    name: string;
-    phoneNumber: string;
-    email: string;
-};
+import type { UserDetails } from "../types";
 
+// chat gpt
 const useAuth = () => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!localStorage.getItem("userDetails"));
 

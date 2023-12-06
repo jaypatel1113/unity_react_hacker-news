@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { Button, TextField, Typography, Container, Alert } from "@mui/material";
 
-import useAuth, { UserDetails } from "../hooks/useAuth";
+import type { UserDetails } from "../types";
+
+import useAuth from "../hooks/useAuth";
+import useFormError from "../hooks/useFormErrors";
 
 const Entry: React.FC = () => {
     const { setAuthenticatedUser, getAuthenticatedUser } = useAuth();
 
+    const { errors, setErrors, validateForm } = useFormError<UserDetails>();
+
     const [formData, setFormData] = useState<UserDetails>({
-        name: "",
-        phoneNumber: "",
-        email: "",
-    });
-    const [errors, setErrors] = useState({
         name: "",
         phoneNumber: "",
         email: "",
@@ -23,51 +22,22 @@ const Entry: React.FC = () => {
         setErrors({ ...errors, [e.target.name]: "" });
     };
 
-    const validateForm = () => {
-        let isValid = true;
-        const newErrors = { name: "", phoneNumber: "", email: "" };
-
-        if (!formData.name) {
-            isValid = false;
-            newErrors.name = "Please fill in your name.";
-        }
-
-        if (!formData.phoneNumber) {
-            isValid = false;
-            newErrors.phoneNumber = "Please fill in your phone number.";
-        }
-
-        if (!formData.email) {
-            isValid = false;
-            newErrors.email = "Please fill in your email.";
-        }
-
-        setErrors(newErrors);
-        return isValid;
-    };
-
     const handleNext = () => {
-        // Check if all fields are filled
-        if (validateForm()) {
-            // Save data to localStorage
+        if (validateForm(formData)) {
             setAuthenticatedUser(formData);
         }
     };
-    
+
     useEffect(() => {
         const data = getAuthenticatedUser();
-        console.log(data);
-        
-        if(data) {
-            setFormData({...data});
+
+        if (data) {
+            setFormData({ ...data });
         }
     }, []);
 
     return (
         <Container maxWidth="sm">
-            <Button>
-                <Link to="/data">Navigate to Other Page</Link> 
-            </Button>
             <Typography variant="h4" gutterBottom>
                 User Details Form
             </Typography>
@@ -84,7 +54,7 @@ const Entry: React.FC = () => {
                 value={formData.name}
                 onChange={handleInputChange}
                 error={Boolean(errors.name)}
-                // helperText={errors.name}
+                helperText={errors.name}
             />
             <TextField
                 label="Phone Number"
@@ -94,7 +64,7 @@ const Entry: React.FC = () => {
                 margin="normal"
                 onChange={handleInputChange}
                 error={Boolean(errors.phoneNumber)}
-                // helperText={errors.phoneNumber}
+                helperText={errors.phoneNumber}
             />
             <TextField
                 label="Email"
@@ -104,7 +74,7 @@ const Entry: React.FC = () => {
                 margin="normal"
                 onChange={handleInputChange}
                 error={Boolean(errors.email)}
-                // helperText={errors.email}
+                helperText={errors.email}
             />
             <Button variant="contained" color="primary" onClick={handleNext}>
                 Next

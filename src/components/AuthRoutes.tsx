@@ -9,10 +9,8 @@ const AuthRoutes = () => {
 
     useEffect(() => {
         if(!isAuthenticated) {
-            showToast("error", "You must fill in details before accessing the page.");
+            showToast({message: "You must fill in details before accessing the page.", variant: "error"});
         }
-        console.log("isAuthenticated", isAuthenticated);
-        
     }, [isAuthenticated]);
 
     if (!isAuthenticated) {
