@@ -1,10 +1,19 @@
+import { useEffect } from "react";
 import { Outlet, Navigate } from "react-router-dom";
 
-interface AuthRoutesProps {
-    isAuthenticated: boolean;
-}
+import { showToast } from "./Toast";
+import useAuth from "../hooks/useAuth";
 
-const AuthRoutes = ({ isAuthenticated }: AuthRoutesProps) => {
+const AuthRoutes = () => {
+    const { isAuthenticated } = useAuth();
+
+    useEffect(() => {
+        
+        if(!isAuthenticated) {
+            showToast("error", "You must fill in details before accessing the page.");
+        }
+    }, []);
+
     if (!isAuthenticated) {
         return <Navigate to="/" />;
     }
