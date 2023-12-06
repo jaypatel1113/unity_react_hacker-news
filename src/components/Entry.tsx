@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container } from "@mui/material";
 
+import useAuth from "../hooks/useAuth";
 import useFormError from "../hooks/useFormValidate";
-import useAuth from "../hooks/useLocalStorage";
 import type { UserDetails } from "../types";
 
 import CustomButton from "./ui/Button";

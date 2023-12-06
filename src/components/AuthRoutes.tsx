@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Navigate,Outlet } from "react-router-dom";
 
-import useAuth from "../hooks/useLocalStorage";
+import useAuth from "../hooks/useAuth";
 import { showToast } from "../utils/toast";
 
 const AuthRoutes = () => {

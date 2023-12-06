@@ -3,7 +3,7 @@ import { useState } from "react";
 import type { UserDetails } from "../types";
 
 // chat gpt
-const useLocalStorage = () => {
+const useAuth = () => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!localStorage.getItem("userDetails"));
 
     // Function to set user details in localStorage and update isAuthenticated
@@ -32,4 +32,4 @@ const useLocalStorage = () => {
     };
 };
 
-export default useLocalStorage;
+export default useAuth;
