@@ -120,6 +120,7 @@ export default function DepartmentList() {
                 onClick={() => handleExpand(department)}
                 aria-expanded={isExpanded(department)}
                 aria-label="show more"
+                style={{transform: `rotate(${isExpanded(department) ? 180 : 0}deg)`, transition: "all .1s ease"}}
             >
                 <ExpandMoreIcon />
             </IconButton>
