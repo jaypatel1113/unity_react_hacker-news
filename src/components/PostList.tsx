@@ -1,21 +1,22 @@
 import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
 
-import CustomTypography from "./ui/Typography";
 import useFetchData from "../hooks/useFetch";
 import type { Post } from "../types";
+
+import CustomTypography from "./ui/Typography";
 
 const PostList: React.FC = (): React.ReactNode => {
     const { data, loading } = useFetchData<Post[]>("https://jsonplaceholder.typicode.com/posts");
     
     const columns: GridColDef[] = [
-        { field: "id", headerName: "ID", flex: 1 },
-        { field: "title", headerName: "Title", flex: 5 },
-        { field: "body", headerName: "Body", flex: 10 },
+        { field: "id", flex: 1, headerName: "ID" },
+        { field: "title", flex: 5, headerName: "Title" },
+        { field: "body", flex: 10, headerName: "Body" },
     ];
 
     // loading while fetching data in middle of table
     const NoRowsOverlay = () => (
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>
+        <div style={{ alignItems: "center", display: "flex", height: "100%", justifyContent: "center" }}>
             {loading ? "Loading data..." : "No data"}
         </div>
     );
@@ -34,7 +35,7 @@ const PostList: React.FC = (): React.ReactNode => {
                             paginationModel: { pageSize: 5 },
                         },
                     }}
-                    slots={{ toolbar: GridToolbar, noRowsOverlay: NoRowsOverlay }}
+                    slots={{ noRowsOverlay: NoRowsOverlay, toolbar: GridToolbar }}
                     slotProps={{
                         toolbar: {
                             showQuickFilter: true,

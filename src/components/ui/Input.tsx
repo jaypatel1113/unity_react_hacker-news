@@ -1,6 +1,6 @@
+import { ChangeEvent } from "react";
 import { TextField } from "@mui/material";
 
-import { ChangeEvent } from "react";
 import { getLabel } from "../../utils";
 
 interface InputProps {
@@ -9,7 +9,7 @@ interface InputProps {
     value: string;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
     error: string;
-};
+}
 
 const Input: React.FC<InputProps> = ({ label, type="text", value, onChange, error }: InputProps): React.ReactNode => {
     return (

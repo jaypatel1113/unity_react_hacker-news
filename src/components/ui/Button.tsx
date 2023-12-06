@@ -5,7 +5,7 @@ interface ButtonProps {
     color?: "primary" | "secondary" | "info" | "error" | "warning" | "success";
     handleClick: () => void;
     children: React.ReactNode
-};
+}
 
 const CustomButton: React.FC<ButtonProps> = ({ variant="contained", color="primary", handleClick, children }: ButtonProps): React.ReactNode => {
     return (

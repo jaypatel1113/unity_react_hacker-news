@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container } from "@mui/material";
 
+import useFormError from "../hooks/useFormValidate";
+import useAuth from "../hooks/useLocalStorage";
 import type { UserDetails } from "../types";
 
-import CustomInput from "./ui/Input";
 import CustomButton from "./ui/Button";
+import CustomInput from "./ui/Input";
 import CustomTypography from "./ui/Typography";
-import useAuth from "../hooks/useLocalStorage";
-import useFormError from "../hooks/useFormValidate";
 
 const Entry: React.FC = () => {
     const { setAuthenticatedUser, getAuthenticatedUser } = useAuth();
@@ -17,9 +17,9 @@ const Entry: React.FC = () => {
     const { errors, setErrors, validateForm } = useFormError<UserDetails>();
 
     const [formData, setFormData] = useState<UserDetails>({
+        email: "",
         name: "",
         phoneNumber: "",
-        email: "",
     });
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +40,7 @@ const Entry: React.FC = () => {
         if (data) {
             setFormData({ ...data });
         }
-    }, []);
+    }, [getAuthenticatedUser]);
 
     return (
         <Container maxWidth="sm">
@@ -77,7 +77,7 @@ const Entry: React.FC = () => {
                 Next
             </CustomButton>
             
-            <div style={{ position: "absolute", bottom: "50px", right: "50px" }}>
+            <div style={{ bottom: "50px", position: "absolute", right: "50px" }}>
                 <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                     <div>Route 1: &nbsp;/</div>
                     <div>Route 2: &nbsp;/data</div>

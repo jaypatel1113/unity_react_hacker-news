@@ -1,9 +1,9 @@
-import { Routes, Route } from "react-router-dom";
+import { Route,Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import AuthRoutes from "./components/AuthRoutes";
-import Entry from "./components/Entry";
 import Data from "./components/Data";
+import Entry from "./components/Entry";
 
 import "react-toastify/dist/ReactToastify.css";
 

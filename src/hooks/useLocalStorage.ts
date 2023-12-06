@@ -25,10 +25,10 @@ const useLocalStorage = () => {
     };
 
     return {
-        isAuthenticated,
-        setAuthenticatedUser,
         clearAuthenticatedUser,
         getAuthenticatedUser,
+        isAuthenticated,
+        setAuthenticatedUser,
     };
 };
 

@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import Collapse from "@mui/material/Collapse";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import IconButton from "@mui/material/IconButton";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import CustomTypography from "./ui/Typography";
 import { DepartmentData } from "../constants";
 import type { Department } from "../types";
+
+import CustomTypography from "./ui/Typography";
 
 export default function DepartmentList() {
     const [selectedItems, setSelectedItems] = useState<string[]>([]);

@@ -4,14 +4,14 @@ import type { ToastOptionsType } from "../types";
 
 export const showToast = ({message, variant}: ToastOptionsType) => {
     const toastOptions: ToastOptions = {
-        position: "bottom-right",
         autoClose: 3000,
-        hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
         draggable: true,
-        theme: "colored",
+        hideProgressBar: false,
+        pauseOnHover: true,
+        position: "bottom-right",
         progress: undefined,
+        theme: "colored",
     };
 
     switch (variant) {
