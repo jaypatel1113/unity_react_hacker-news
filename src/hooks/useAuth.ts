@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type UserDetails = {
+export type UserDetails = {
     name: string;
     phoneNumber: string;
     email: string;

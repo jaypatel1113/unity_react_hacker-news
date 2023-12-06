@@ -8,11 +8,12 @@ const AuthRoutes = () => {
     const { isAuthenticated } = useAuth();
 
     useEffect(() => {
-        
         if(!isAuthenticated) {
             showToast("error", "You must fill in details before accessing the page.");
         }
-    }, []);
+        console.log("isAuthenticated", isAuthenticated);
+        
+    }, [isAuthenticated]);
 
     if (!isAuthenticated) {
         return <Navigate to="/" />;
