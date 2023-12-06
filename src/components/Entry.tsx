@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Button, TextField, Typography, Container, Alert } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { Button, TextField, Typography, Container } from "@mui/material";
 
 import type { UserDetails } from "../types";
 
 import useAuth from "../hooks/useAuth";
 import useFormError from "../hooks/useFormValidate";
-import { useNavigate } from "react-router-dom";
+import CustomInput from "./ui/Input";
+import CustomButton from "./ui/Button";
+import CustomTypography from "./ui/Typography";
 
 const Entry: React.FC = () => {
     const { setAuthenticatedUser, getAuthenticatedUser } = useAuth();
@@ -41,50 +44,45 @@ const Entry: React.FC = () => {
 
     return (
         <Container maxWidth="sm">
-            <Typography variant="h4" gutterBottom>
+            <CustomTypography>
                 User Details Form
-            </Typography>
+            </CustomTypography>
             {/* {Object.values(errors).some((error) => error !== "") && (
                 <Alert severity="error" style={{ marginTop: "16px" }}>
                     Please fill in all the required fields.
                 </Alert>
             )} */}
-            <TextField
-                label="Name"
-                name="name"
-                type="text"
-                fullWidth
-                margin="normal"
+            <CustomInput
+                label="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                error={Boolean(errors.name)}
-                helperText={errors.name}
+                error={errors.name ?? ""}
             />
-            <TextField
-                label="Phone Number"
-                name="phoneNumber"
+            <CustomInput
+                label="phoneNumber"
                 type="number"
-                fullWidth
                 value={formData.phoneNumber}
-                margin="normal"
                 onChange={handleInputChange}
-                error={Boolean(errors.phoneNumber)}
-                helperText={errors.phoneNumber}
+                error={errors.phoneNumber ?? ""}
             />
-            <TextField
-                label="Email"
-                name="email"
+            <CustomInput
+                label="email"
                 type="email"
-                fullWidth
                 value={formData.email}
-                margin="normal"
                 onChange={handleInputChange}
-                error={Boolean(errors.email)}
-                helperText={errors.email}
+                error={errors.email ?? ""}
             />
-            <Button variant="contained" color="primary" onClick={handleNext}>
+            
+            <CustomButton handleClick={handleNext}>
                 Next
-            </Button>
+            </CustomButton>
+            
+            <div style={{ position: "absolute", bottom: "50px", right: "50px" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                    <div>Route 1: &nbsp;/</div>
+                    <div>Route 2: &nbsp;/data</div>
+                </div>
+            </div>
         </Container>
     );
 };

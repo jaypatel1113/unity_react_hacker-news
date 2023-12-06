@@ -1,42 +1,19 @@
-import React from "react";
-import { Typography } from "@mui/material";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Typography } from "@mui/material";
 
-interface SubDepartment {
-    name: string;
-}
-
-interface Department {
-    department: string;
-    sub_departments: SubDepartment[];
-}
-
-const jsonData: Department[] = [
-    {
-        department: "customer_service",
-        sub_departments: [
-            { name: "support" }, 
-            { name: "customer_success" }
-        ],
-    },
-    {
-        department: "design",
-        sub_departments: [
-            { name: "graphic_design" },
-            { name: "product_design" },
-            { name: "web_design" },
-        ],
-    },
-];
+import { DepartmentData } from "../constants";
+import type { Department } from "../types";
+import CustomTypography from "./ui/Typography";
 
 export default function DepartmentList() {
-    const [selectedItems, setSelectedItems] = React.useState<string[]>([]);
-    const [expanded, setExpanded] = React.useState<string[]>([]);
+    const [selectedItems, setSelectedItems] = useState<string[]>([]);
+    const [expanded, setExpanded] = useState<string[]>([]);
 
     const handleToggle = (name: string) => {
         const newSelected: string[] = [...selectedItems];
@@ -145,11 +122,11 @@ export default function DepartmentList() {
 
     return (
         <>
-            <Typography variant="h4" style={{margin: "26px 0"}}>
+            <CustomTypography>
                 Department list
-            </Typography>
+            </CustomTypography>
 
-            {jsonData.map(renderDepartment)}
+            {DepartmentData.map(renderDepartment)}
         </>
     );
 }
