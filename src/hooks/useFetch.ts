@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
 interface UseFetchDataResult<T> {
-    data: T[];
+    data: T | undefined;
     loading: boolean;
 }
 
 function useFetchData<T>(url: string): UseFetchDataResult<T> {
-    const [data, setData] = useState<T[]>([]);
+    const [data, setData] = useState<T>();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {

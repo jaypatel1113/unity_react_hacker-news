@@ -1,12 +1,9 @@
-import React, { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 
 const Search = styled("div")(({ theme }) => ({
@@ -50,8 +47,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function SearchAppBar() {
-    const [searchValue, setSearchValue] = useState("");
+interface Props {
+    searchValue: string;
+    setSearchValue: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const TopBar = ({ searchValue, setSearchValue } : Props) => {
+    
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchValue(event.target.value);
@@ -61,15 +63,6 @@ export default function SearchAppBar() {
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        sx={{ mr: 2 }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
                     <Typography
                         variant="h6"
                         noWrap
@@ -79,7 +72,7 @@ export default function SearchAppBar() {
                             display: { xs: "none", sm: "block" },
                         }}
                     >
-                        MUI
+                        Hacker News
                     </Typography>
                     <Search>
                         <SearchIconWrapper>
@@ -96,4 +89,6 @@ export default function SearchAppBar() {
             </AppBar>
         </Box>
     );
-}
+};
+
+export default TopBar;

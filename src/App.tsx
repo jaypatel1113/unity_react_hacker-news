@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import Data from "./components/Data";
 
 import "react-toastify/dist/ReactToastify.css";
-import Search from "./components/Search";
+import Search from "./components/ui/Search";
 
 const App: React.FC = () => {
     return (

@@ -1,7 +1,7 @@
-import { PostType } from "./post";
+import { NewsType } from "./news";
 import { ToastOptionsType } from "./toast";
 
 export type {
-    PostType,
+    NewsType,
     ToastOptionsType,
 }
