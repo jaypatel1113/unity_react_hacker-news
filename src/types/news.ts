@@ -1,4 +1,4 @@
-type Hits = {
+export type HitsType = {
     author: string,
     created_at: string,
     created_at_i: number,
@@ -6,7 +6,19 @@ type Hits = {
     updated_at: string,
     url: string,
     _tags: string[],
+    objectID: string,
 }
 export interface NewsType {
-    hits: Hits[];
+    hits: HitsType[];
 }
+
+
+export type CommentsType = {
+    id: string,
+    author: string;
+    created_at: string;
+    points: number | null;
+    title: string;
+    text?: string;
+    children?: CommentsType[];
+};

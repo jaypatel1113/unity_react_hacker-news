@@ -12,21 +12,19 @@ export default function SearchAppBar() {
     const debouncedSearch = useDebounce(searchValue);
 
     const { data, loading } = useFetchData<NewsType>(`http://hn.algolia.com/api/v1/search?query=${debouncedSearch}`);
-    
-    useEffect(() => {
-        console.log(data);
-    }, [debouncedSearch]);
 
     return (
-        <div>
+        <div className="font-sans">
             <TopBar searchValue={searchValue} setSearchValue={setSearchValue} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {
                 loading ? <>Loading...</> : data?.hits.map(hit => (
-                    <Container  maxWidth="xl" sx={{ flexGrow: 1 }}>
-                        <ImgMediaCard />
+                    <Container  maxWidth="xl" sx={{ flexGrow: 1 }} key={hit.created_at_i}>
+                        <ImgMediaCard hit={hit} />
                     </Container>
                 ))
             }
+            </div>
         </div>
     );
 }
