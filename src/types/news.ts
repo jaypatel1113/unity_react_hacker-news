@@ -22,3 +22,8 @@ export type CommentsType = {
     text?: string;
     children?: CommentsType[];
 };
+
+export type ErrorType = {
+    message: string,
+    status: number,
+}
