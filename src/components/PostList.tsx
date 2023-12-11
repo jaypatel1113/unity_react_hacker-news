@@ -14,7 +14,7 @@ import ErrorPage from "./ErrorPage";
 
 const PostList: React.FC = (): React.ReactNode => {
     const params = useParams<{ id: string }>();
-    const { data, loading, error } = useFetchData<CommentsType>(`http://hn.algolia.com/api/v1/items/${params.id}`);
+    const { data, loading, error } = useFetchData<CommentsType>(`https://hn.algolia.com/api/v1/items/${params.id}`);
 
     const [visibleComments, setVisibleComments] = useState(5);
 

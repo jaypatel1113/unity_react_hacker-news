@@ -13,7 +13,7 @@ const HeroSection = () => {
 
     const debouncedSearch = useDebounce(searchValue);
 
-    const { data, loading } = useFetchData<NewsType>(`http://hn.algolia.com/api/v1/search?query=${debouncedSearch}`);
+    const { data, loading } = useFetchData<NewsType>(`https://hn.algolia.com/api/v1/search?query=${debouncedSearch}`);
 
     useEffect(() => {
         document.title = "Hacker News | Unity Internet Private Limited";
