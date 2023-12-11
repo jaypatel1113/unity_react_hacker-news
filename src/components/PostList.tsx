@@ -1,76 +1,11 @@
-import React, { useState } from "react";
-import { Collapse, Typography, Button, Card, CardContent } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetchData from "../hooks/useFetch";
 import { CommentsType } from "../types";
+import { Link } from "react-router-dom";
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import Comments from "./Comments";
 
-const Comment: React.FC<{ comment: CommentsType }> = ({ comment }) => {
-    const [showNestedComments, setShowNestedComments] = useState(false);
-
-    return (
-        <Card variant="outlined" className="mt-4">
-            <CardContent>
-                <Typography
-                    variant="h5"
-                    component="div"
-                    className="font-semibold"
-                >
-                    {comment.author}
-                </Typography>
-
-                <Typography
-                    variant="body1"
-                    component="div"
-                    className="text-gray-800"
-                >
-                    {comment.text?.split(/(<a.*?<\/a>)/).map((part, index) => {
-                        if (part.startsWith("<a")) {
-                            // It's a link, render it as JSX
-                            return (
-                                <span
-                                    key={index}
-                                    className="text-blue-500 underline cursor-pointer"
-                                    dangerouslySetInnerHTML={{ __html: part }}
-                                />
-                            );
-                        } else {
-                            // It's regular text, apply styles
-                            return (
-                                <p
-                                    key={index}
-                                    dangerouslySetInnerHTML={{ __html: part }}
-                                />
-                            );
-                        }
-                    })}
-                </Typography>
-
-                {comment.children && comment.children.length > 0 && (
-                    <div className="flex gap-3 items-center justify-between">
-                        <Button
-                            variant="outlined"
-                            className="text-blue-500 underline cursor-pointer mt-2"
-                            onClick={() => setShowNestedComments(!showNestedComments)}
-                        >
-                            {showNestedComments ? "Hide Replies" : "View Replies"}
-                        </Button>
-                        <div>Total replies: {comment.children.length}</div>
-                    </div>
-                )}
-
-                <Collapse in={showNestedComments}>
-                    <div className="ml-4">
-                        {comment.children &&
-                            comment.children.map((nestedComment, index) => (
-                                <Comment key={index} comment={nestedComment} />
-                            ))
-                        }
-                    </div>
-                </Collapse>
-            </CardContent>
-        </Card>
-    );
-};
 
 const PostList: React.FC = (): React.ReactNode => {
     const params = useParams<{ id: string }>();
@@ -83,7 +18,7 @@ const PostList: React.FC = (): React.ReactNode => {
     };
 
     if(loading) {
-        return <>Loaindg....</>
+        return <>Loading....</>
     }
 
     
@@ -92,23 +27,25 @@ const PostList: React.FC = (): React.ReactNode => {
     }
 
     return (
-        <div className="py-10">
-            <Typography variant="h4" className="font-bold mb-4">
-                {data?.author}
-            </Typography>
-
-            <Typography variant="body1" className="text-gray-600 mb-2">
-                Points: {data?.points}
-            </Typography>
-
-            <Typography variant="body1" className="text-gray-800">
+        <div className="py-10 font-mono relative">
+            <Link to={"/"} className="p-2 md:p-3 rounded-full text-[#b30021] bg-[#ff040437] backdrop-blur-sm fixed top-6 right-4 md:right-6">
+                <CloseRoundedIcon />
+            </Link>
+            <div className="font-bold mb-4 text-4xl font-sans">
                 {data?.title}
-            </Typography>
+            </div>
 
-            <Typography variant="body2" className="text-gray-600 mt-2">
-                Total Comments:{" "}
-                {data ? (data.children ? data.children.length : 0) : 0}
-            </Typography>
+            <div className="mt-2 bg-[#d4faeb] text-[#48d99f] max-w-max px-4 py-1 rounded-full text-base font-semibold">
+                Points: {data?.points}
+            </div>
+
+            {/* <Typography variant="body1" className="text-gray-800">
+                {data?.title}
+            </Typography> */}
+
+            <div className="mt-2 bg-[#e5eeff] text-[#3fa0ff] max-w-max px-3 py-1 rounded-full text-sm font-semibold tracking-wide">
+                Total Comments: {data ? (data.children ? data.children.length : 0) : 0}
+            </div>
 
             {/* Render comments using the Comment component */}
             {data?.children && (
@@ -116,20 +53,18 @@ const PostList: React.FC = (): React.ReactNode => {
                     {data.children
                         .slice(0, visibleComments)
                         .map((comment, index) => (
-                            <Comment key={index} comment={comment} />
+                            <Comments key={index} comment={comment} />
                         ))}
                 </div>
             )}
 
             {data?.children && visibleComments < data.children.length && (
-                <Button
-                    variant="contained"
-                    color="primary"
+                <div 
+                    className="mt-5 bg-[#f1daf2] text-[#df6cdb] max-w-max px-4 py-1 rounded-full text-base font-semibold cursor-pointer"
                     onClick={loadMoreComments}
-                    className="mt-2"
                 >
-                    Load More
-                </Button>
+                    Load more
+                </div>
             )}
         </div>
     )

@@ -1,12 +1,11 @@
-import * as React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import CommentIcon from '@mui/icons-material/Comment';
+import LaunchIcon from '@mui/icons-material/Launch';
 import { HitsType } from "../../types";
-import { format_one } from "../../utils";
-import { Link } from "react-router-dom";
+import { format_one, format_two } from "../../utils";
 
 type Props = {
     hit: HitsType
@@ -14,30 +13,32 @@ type Props = {
 
 export default function ImgMediaCard({hit}: Props) {
     return (
-        <Card sx={{ maxWidth: 360 }}>
+        <Card sx={{ maxWidth: 360, height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "15px", position: "relative" }}>
+            <div className="absolute top-2 right-2 text-xs text-gray-400 tracking-wide">
+                last updated at: {format_two(hit.updated_at)}
+            </div>
             <CardContent>
-                <div className="flex justify-between items-center gap-2">
-                    <div className="text-lg font-bold tracking-wide">
+                <div className="flex flex-col gap-1">
+                    <div className="text-2xl font-semibold tracking-wide">
                         {hit.author}
                     </div>
                     <div className="flex flex-col tracking-normal">
-                        <div className="text-xs font-medium truncate">
-                            created_at : {format_one(hit.created_at)}
+                        <div className="text-xs text-black/50">
+                            {format_one(hit.created_at)}
                         </div>
                     </div>
                 </div>
-                <Typography variant="body2" color="text.secondary" className="!mt-4">
+                <div className="mt-4 text-[#666] text-base tracking-wide">
                     {hit.title}
-                </Typography>
+                </div>
             </CardContent>
-            <CardActions>
-                <Button variant="contained" size="small">
-                    <Link to={hit.url} target="_blank">Share</Link>
+            <CardActions sx={{display: "flex", justifyContent: "space-between"}}>
+                <Button variant="contained" size="small" startIcon={<LaunchIcon />} href={hit.url} target="_blank">
+                    View
                 </Button>
-                <Button size="small">
-                    <Link to={`/${hit.objectID}`}>Learn More</Link>
+                <Button variant="outlined" size="small" startIcon={<CommentIcon />} href={`/${hit.objectID}`}>
+                    Comments
                 </Button>
-
                 {/* map through tags */}
             </CardActions>
         </Card>
