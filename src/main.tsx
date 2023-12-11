@@ -1,10 +1,10 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
+import { createTheme,ThemeProvider } from "@mui/material";
 
 import App from "./App.tsx";
 
 import "./index.css";
-import { ThemeProvider, createTheme } from "@mui/material";
 
 // Create a custom theme
 const theme = createTheme({

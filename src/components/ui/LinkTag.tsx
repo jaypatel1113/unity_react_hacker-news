@@ -6,7 +6,7 @@ type Props = {
     url?: string;
     text: string;
     className: string;
-    Icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
+    Icon: OverridableComponent<SvgIconTypeMap<unknown, "svg">> & {
         muiName: string;
     }
 }

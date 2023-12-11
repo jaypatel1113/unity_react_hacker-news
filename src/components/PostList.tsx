@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
-import type { CommentsType } from "../types";
 import { useFetchData } from "../hooks/useFetch";
-import Comments from "./Comments";
+import type { CommentsType } from "../types";
+
+import Loader from "./loaders/Loader";
 import Button from "./ui/Button";
 import Label from "./ui/Label";
-import Loader from "./loaders/Loader";
+import Comments from "./Comments";
 import ErrorPage from "./ErrorPage";
 
 

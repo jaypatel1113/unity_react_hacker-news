@@ -1,19 +1,19 @@
-import { styled, alpha } from "@mui/material/styles";
+import SearchIcon from "@mui/icons-material/Search";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
+import InputBase from "@mui/material/InputBase";
+import { alpha,styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
 
 const Search = styled("div")(({ theme }) => ({
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
     "&:hover": {
         backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    borderRadius: theme.shape.borderRadius,
     marginLeft: 0,
+    position: "relative",
     width: "100%",
     [theme.breakpoints.up("sm")]: {
         marginLeft: theme.spacing(1),
@@ -22,29 +22,29 @@ const Search = styled("div")(({ theme }) => ({
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
     alignItems: "center",
+    display: "flex",
+    height: "100%",
     justifyContent: "center",
+    padding: theme.spacing(0, 2),
+    pointerEvents: "none",
+    position: "absolute",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: "inherit",
-    width: "100%",
     "& .MuiInputBase-input": {
         padding: theme.spacing(1, 1, 1, 0),
         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
         transition: theme.transitions.create("width"),
         [theme.breakpoints.up("sm")]: {
-            width: "12ch",
             "&:focus": {
                 width: "20ch",
             },
+            width: "12ch",
         },
     },
+    color: "inherit",
+    width: "100%",
 }));
 
 interface Props {
@@ -61,15 +61,15 @@ const TopBar = ({ searchValue, setSearchValue } : Props) => {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="fixed" sx={{ background: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(10px)", color: "black", boxShadow:"none" }}>
+            <AppBar position="fixed" sx={{ backdropFilter: "blur(10px)", background: "rgba(255, 255, 255, 0.1)", boxShadow:"none", color: "black" }}>
                 <Toolbar>
                     <Typography
                         variant="h6"
                         noWrap
                         component="div"
                         sx={{
+                            display: { sm: "block", xs: "none" },
                             flexGrow: 1,
-                            display: { xs: "none", sm: "block" },
                             fontFamily: "sans-serif",
                             fontWeight: 700,
                         }}

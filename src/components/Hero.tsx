@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
-import type { NewsType } from "../types";
 import { useDebounce } from "../hooks/useDebounce";
 import { useFetchData } from "../hooks/useFetch";
-import TopBar from "./ui/TopBar";
-import ImgMediaCard from "./ui/Card";
+import type { NewsType } from "../types";
+
 import Loader from "./loaders/Loader";
+import ImgMediaCard from "./ui/Card";
+import TopBar from "./ui/TopBar";
 
 const HeroSection = () => {
     const [searchValue, setSearchValue] = useState("");

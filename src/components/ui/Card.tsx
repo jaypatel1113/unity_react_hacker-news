@@ -1,14 +1,14 @@
+import CommentIcon from '@mui/icons-material/Comment';
+import LaunchIcon from '@mui/icons-material/Launch';
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CommentIcon from '@mui/icons-material/Comment';
-import LaunchIcon from '@mui/icons-material/Launch';
-
-import LinkTag from "./LinkTag";
-import Label from "./Label";
 
 import { HitsType } from "../../types";
 import { format_one, format_two } from "../../utils";
+
+import Label from "./Label";
+import LinkTag from "./LinkTag";
 
 type Props = {
     hit: HitsType
@@ -16,7 +16,7 @@ type Props = {
 
 export default function ImgMediaCard({hit}: Props) {
     return (
-        <Card sx={{ height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "15px", position: "relative" }}>
+        <Card sx={{ display: "flex", flexDirection: "column", height: "100%", justifyContent: "space-between", padding: "15px", position: "relative" }}>
             <div className="absolute top-2 right-2 text-xs text-gray-400 tracking-wide">
                 last updated at: {format_two(hit.updated_at)}
             </div>

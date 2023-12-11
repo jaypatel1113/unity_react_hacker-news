@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { ErrorType } from "../types";
 
 interface UseFetchDataResult<T> {
@@ -42,5 +43,5 @@ export const useFetchData = <T>(url: string): UseFetchDataResult<T> => {
         fetchData();
     }, [url]);
 
-    return { data, loading, error };
+    return { data, error, loading };
 }

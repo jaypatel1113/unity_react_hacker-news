@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card, CardContent, Collapse, Typography } from "@mui/material";
 
 import { CommentsType } from "../types";
+
 import Button from "./ui/Button";
 
 const Comments: React.FC<{ comment: CommentsType }> = ({ comment }) => {

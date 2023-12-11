@@ -1,7 +1,8 @@
-import { Button } from "@mui/material";
-import { ErrorType } from "../types";
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { Link } from "react-router-dom";
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import { Button } from "@mui/material";
+
+import { ErrorType } from "../types";
 
 type Props = {
     error: ErrorType;
