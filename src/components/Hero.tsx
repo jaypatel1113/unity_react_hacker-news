@@ -36,7 +36,7 @@ const HeroSection = () => {
                 }
             </div>
             {data?.hits && visibleNews < data.hits.length && (
-                <Button fn={loadMoreNews} total={data.hits.length} visible={visibleNews} />
+                <Button fn={loadMoreNews} total={data.hits.length} visible={visibleNews+1} />
             )}
         </div>
     );
