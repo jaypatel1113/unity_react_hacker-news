@@ -25,6 +25,10 @@ const HeroSection = () => {
         document.title = "Hacker News | Unity Internet Private Limited";
     }, []);
 
+    useEffect(() => {
+        setVisibleNews(6);
+    }, [searchValue]);
+
     return (
         <div className="font-sans pb-10">
             <TopBar searchValue={searchValue} setSearchValue={setSearchValue} />
