@@ -7,7 +7,7 @@ interface UseFetchDataResult<T> {
     error: ErrorType | null; // Add an error property to the result
 }
 
-function useFetchData<T>(url: string): UseFetchDataResult<T> {
+export const useFetchData = <T>(url: string): UseFetchDataResult<T> => {
     const [data, setData] = useState<T | undefined>();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<ErrorType | null>(null); // Initialize error state
@@ -44,5 +44,3 @@ function useFetchData<T>(url: string): UseFetchDataResult<T> {
 
     return { data, loading, error };
 }
-
-export default useFetchData;

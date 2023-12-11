@@ -1,5 +1,8 @@
-import { NewsType, HitsType, CommentsType, ErrorType } from "./news";
+import { NewsType, HitsType } from "./news";
+import { CommentsType } from "./comment";
+import { ErrorType } from "./error";
 import { ToastOptionsType } from "./toast";
+
 
 export type {
     NewsType,

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import useFetchData from "../hooks/useFetch";
-import { CommentsType } from "../types";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+
+import type { CommentsType } from "../types";
+import { useFetchData } from "../hooks/useFetch";
 import Comments from "./Comments";
+import Button from "./ui/Button";
+import Label from "./ui/Label";
 
 
 const PostList: React.FC = (): React.ReactNode => {
@@ -44,13 +46,15 @@ const PostList: React.FC = (): React.ReactNode => {
                 {data?.title}
             </div>
 
-            <div className="mt-2 bg-[#d4faeb] text-[#48d99f] max-w-max px-4 py-1 rounded-full text-base font-semibold">
-                Points: {data?.points}
-            </div>
+            <Label 
+                text={`Points: ${data?.points}`} 
+                className="bg-[#d4faeb] text-[#48d99f] px-4 text-base " /
+            >
 
-            <div className="mt-2 bg-[#e5eeff] text-[#3fa0ff] max-w-max px-3 py-1 rounded-full text-sm font-semibold tracking-wide">
-                Total Comments: {data ? (data.children ? data.children.length : 0) : 0}
-            </div>
+            <Label 
+                text={`Total Comments: ${data ? (data.children ? data.children.length : 0) : 0}`} 
+                className="bg-[#e5eeff] text-[#3fa0ff] px-3 text-sm " 
+            />
 
             {/* Render comments using the Comment component */}
             {data?.children && (
@@ -64,12 +68,11 @@ const PostList: React.FC = (): React.ReactNode => {
             )}
 
             {data?.children && visibleComments < data.children.length && (
-                <div 
-                    className="mt-5 bg-[#f1daf2] text-[#df6cdb] max-w-max px-4 py-1 rounded-full text-base font-semibold cursor-pointer"
-                    onClick={loadMoreComments}
-                >
-                    Load more ({data.children.length - visibleComments} remaining)
-                </div>
+                <Button 
+                    fn={loadMoreComments} 
+                    total={data.children.length} 
+                    visible={visibleComments} 
+                />
             )}
         </div>
     )

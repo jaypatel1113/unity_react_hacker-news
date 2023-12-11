@@ -74,7 +74,7 @@ const TopBar = ({ searchValue, setSearchValue } : Props) => {
                             fontWeight: 700,
                         }}
                     >
-                        Tech News
+                        TECH NEWS
                     </Typography>
                     <Search>
                         <SearchIconWrapper>

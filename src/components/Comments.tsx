@@ -1,6 +1,8 @@
-import { Card, CardContent, Collapse, Typography } from "@mui/material";
 import { useState } from "react";
+import { Card, CardContent, Collapse, Typography } from "@mui/material";
+
 import { CommentsType } from "../types";
+import Button from "./ui/Button";
 
 const Comments: React.FC<{ comment: CommentsType }> = ({ comment }) => {
     const [showNestedComments, setShowNestedComments] = useState(false);
@@ -48,9 +50,7 @@ const Comments: React.FC<{ comment: CommentsType }> = ({ comment }) => {
                 {comment.children && comment.children.length > 0 && (
                     <div
                         className="mt-4 bg-[#fbff041d] text-[#8c9033] max-w-max px-4 py-1 rounded-full text-base font-semibold cursor-pointer flex gap-2 items-center justify-center"
-                        onClick={() =>
-                            setShowNestedComments(!showNestedComments)
-                        }
+                        onClick={() => setShowNestedComments(!showNestedComments)}
                     >
                         <div className="w-2 h-2 rounded-full bg-[#8c9033]" />
                         <div className="text-xs truncate">
@@ -71,16 +71,19 @@ const Comments: React.FC<{ comment: CommentsType }> = ({ comment }) => {
                                         key={index}
                                         comment={nestedComment}
                                     />
-                                ))}
+                                )
+                            )
+                        }
+
                         {comment.children &&
                             visibleNestedComments < comment.children.length && (
-                                <div
-                                    className="mt-5 bg-[#f1daf2] text-[#df6cdb] max-w-max px-4 py-1 rounded-full text-base font-semibold cursor-pointer"
-                                    onClick={loadMoreNestedComments}
-                                >
-                                    Load more ({comment.children.length - visibleNestedComments} remaining)
-                                </div>
-                            )}
+                                <Button 
+                                    fn={loadMoreNestedComments} 
+                                    total={comment.children.length} 
+                                    visible={visibleNestedComments} 
+                                />
+                            )
+                        }
                     </div>
                 </Collapse>
             </CardContent>

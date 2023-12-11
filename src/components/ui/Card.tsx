@@ -1,12 +1,14 @@
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
 import CommentIcon from '@mui/icons-material/Comment';
 import LaunchIcon from '@mui/icons-material/Launch';
+
+import LinkTag from "./LinkTag";
+import Label from "./Label";
+
 import { HitsType } from "../../types";
 import { format_one, format_two } from "../../utils";
-import { Link } from "react-router-dom";
 
 type Props = {
     hit: HitsType
@@ -34,34 +36,31 @@ export default function ImgMediaCard({hit}: Props) {
                 </div>
             </CardContent>
             <CardActions sx={{display: "flex", justifyContent: "space-between"}}>
-                <Link 
-                    to={hit.url} 
-                    target="_blank"
-                    className="px-3 py-1 rounded-full bg-[#e5eeff] text-[#3fa0ff] flex gap-2 items-center justify-between font-mono tracking-widest"
-                >
-                    <LaunchIcon fontSize="small" />
-                    <div className="leading-[1] font-semibold text-xs tracking-wider uppercase">
-                        View
-                    </div>
-                </Link>
-                <Link 
-                    to={`/${hit.objectID}`}
-                    className="px-3 py-1 rounded-full bg-[#f7eee3] text-[#ff956c] flex gap-2 items-center justify-between font-mono tracking-widest"
-                >
-                    <CommentIcon fontSize="small" />
-                    <div className="leading-[1] font-semibold text-xs tracking-wider uppercase">
-                        Comments
-                    </div>
-                </Link>
-
+                <LinkTag 
+                    url={hit.url} 
+                    text={"View"} 
+                    Icon={LaunchIcon} 
+                    className={"bg-[#e5eeff] text-[#3fa0ff]"}
+                />
+                <LinkTag 
+                    url={`/${hit.objectID}`} 
+                    text={"Comments"} 
+                    Icon={CommentIcon} 
+                    className={"bg-[#f7eee3] text-[#ff956c]"}
+                />
             </CardActions>
 
             {/* tags */}
             <div className="flex gap-x-2 flex-wrap">
             {
-                hit._tags.map(tag => <div className="text-xs bg-[#c1ebee96] text-[#01c4d4] px-3 py-1 rounded-full font-semibold mt-1 font-mono tracking-tighter">{tag}</div>)
-            }
+                hit._tags.map(tag => 
+                    <Label 
+                        text={tag} 
+                        className="bg-[#c1ebee96] text-[#01c4d4] px-3 text-[10px] tracking-tighter " 
+                    />
+            )}
             </div>
+
             
         </Card>
     );
