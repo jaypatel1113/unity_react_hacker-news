@@ -61,7 +61,7 @@ const TopBar = ({ searchValue, setSearchValue } : Props) => {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="fixed">
+            <AppBar position="fixed" sx={{ background: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(10px)", color: "black", boxShadow:"none" }}>
                 <Toolbar>
                     <Typography
                         variant="h6"
@@ -70,6 +70,8 @@ const TopBar = ({ searchValue, setSearchValue } : Props) => {
                         sx={{
                             flexGrow: 1,
                             display: { xs: "none", sm: "block" },
+                            fontFamily: "sans-serif",
+                            fontWeight: 700,
                         }}
                     >
                         Tech News
@@ -83,6 +85,7 @@ const TopBar = ({ searchValue, setSearchValue } : Props) => {
                             inputProps={{ "aria-label": "search" }}
                             value={searchValue}
                             onChange={handleSearchChange}
+                            sx={{background: "rgba(0,0,0,0.1)", borderRadius: "6px"}}
                         />
                     </Search>
                 </Toolbar>

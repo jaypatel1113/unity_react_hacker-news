@@ -6,6 +6,7 @@ import CommentIcon from '@mui/icons-material/Comment';
 import LaunchIcon from '@mui/icons-material/Launch';
 import { HitsType } from "../../types";
 import { format_one, format_two } from "../../utils";
+import { Link } from "react-router-dom";
 
 type Props = {
     hit: HitsType
@@ -13,7 +14,7 @@ type Props = {
 
 export default function ImgMediaCard({hit}: Props) {
     return (
-        <Card sx={{ maxWidth: 360, height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "15px", position: "relative" }}>
+        <Card sx={{ height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "15px", position: "relative" }}>
             <div className="absolute top-2 right-2 text-xs text-gray-400 tracking-wide">
                 last updated at: {format_two(hit.updated_at)}
             </div>
@@ -33,14 +34,35 @@ export default function ImgMediaCard({hit}: Props) {
                 </div>
             </CardContent>
             <CardActions sx={{display: "flex", justifyContent: "space-between"}}>
-                <Button variant="contained" size="small" startIcon={<LaunchIcon />} href={hit.url} target="_blank">
-                    View
-                </Button>
-                <Button variant="outlined" size="small" startIcon={<CommentIcon />} href={`/${hit.objectID}`}>
-                    Comments
-                </Button>
-                {/* map through tags */}
+                <Link 
+                    to={hit.url} 
+                    target="_blank"
+                    className="px-3 py-1 rounded-full bg-[#e5eeff] text-[#3fa0ff] flex gap-2 items-center justify-between font-mono tracking-widest"
+                >
+                    <LaunchIcon fontSize="small" />
+                    <div className="leading-[1] font-semibold text-xs tracking-wider uppercase">
+                        View
+                    </div>
+                </Link>
+                <Link 
+                    to={`/${hit.objectID}`}
+                    className="px-3 py-1 rounded-full bg-[#f7eee3] text-[#ff956c] flex gap-2 items-center justify-between font-mono tracking-widest"
+                >
+                    <CommentIcon fontSize="small" />
+                    <div className="leading-[1] font-semibold text-xs tracking-wider uppercase">
+                        Comments
+                    </div>
+                </Link>
+
             </CardActions>
+
+            {/* tags */}
+            <div className="flex gap-x-2 flex-wrap">
+            {
+                hit._tags.map(tag => <div className="text-xs bg-[#c1ebee96] text-[#01c4d4] px-3 py-1 rounded-full font-semibold mt-1 font-mono tracking-tighter">{tag}</div>)
+            }
+            </div>
+            
         </Card>
     );
 }

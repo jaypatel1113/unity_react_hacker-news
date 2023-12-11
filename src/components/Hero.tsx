@@ -20,7 +20,7 @@ export default function HeroSection() {
     return (
         <div className="font-sans pb-10">
             <TopBar searchValue={searchValue} setSearchValue={setSearchValue} />
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 pt-20">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 pt-20 gap-x-5 gap-y-5 md:gap-y-10">
             {
                 loading ? <>Loading...</> : data?.hits.map((hit) =>
                 hit.title ? (
