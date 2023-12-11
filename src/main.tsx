@@ -4,7 +4,7 @@ import { createTheme,ThemeProvider } from "@mui/material";
 
 import App from "./App.tsx";
 
-import "./index.css";
+import "./styles/index.css";
 
 // Create a custom theme
 const theme = createTheme({
