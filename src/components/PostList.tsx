@@ -48,10 +48,6 @@ const PostList: React.FC = (): React.ReactNode => {
                 Points: {data?.points}
             </div>
 
-            {/* <Typography variant="body1" className="text-gray-800">
-                {data?.title}
-            </Typography> */}
-
             <div className="mt-2 bg-[#e5eeff] text-[#3fa0ff] max-w-max px-3 py-1 rounded-full text-sm font-semibold tracking-wide">
                 Total Comments: {data ? (data.children ? data.children.length : 0) : 0}
             </div>
@@ -72,7 +68,7 @@ const PostList: React.FC = (): React.ReactNode => {
                     className="mt-5 bg-[#f1daf2] text-[#df6cdb] max-w-max px-4 py-1 rounded-full text-base font-semibold cursor-pointer"
                     onClick={loadMoreComments}
                 >
-                    Load more
+                    Load more ({data.children.length - visibleComments} remaining)
                 </div>
             )}
         </div>
