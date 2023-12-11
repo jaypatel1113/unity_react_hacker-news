@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import Data from "./components/Data";
 
 import "react-toastify/dist/ReactToastify.css";
-import Search from "./components/ui/Search";
+import HeroSection from "./components/Hero";
 
 const App: React.FC = () => {
     return (
@@ -12,7 +12,7 @@ const App: React.FC = () => {
             <Routes>
                 <Route
                     path="/"
-                    element={<Search />}
+                    element={<HeroSection />}
                 />
 
                 {/* <Route element={<AuthRoutes />}> */}

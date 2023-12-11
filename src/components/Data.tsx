@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { Container } from "@mui/material";
 
 const PostList = lazy(() => import("./PostList"));

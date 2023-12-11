@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
-import useFetchData from "../../hooks/useFetch";
-import { NewsType } from "../../types";
-import { useDebounce } from "../../hooks/useDebounce";
-import TopBar from "../TopBar";
-import ImgMediaCard from "./Card";
+import useFetchData from "../hooks/useFetch";
+import { NewsType } from "../types";
+import { useDebounce } from "../hooks/useDebounce";
+import TopBar from "./ui/TopBar";
+import ImgMediaCard from "./ui/Card";
 import { Container } from "@mui/material";
 
-export default function SearchAppBar() {
+export default function HeroSection() {
     const [searchValue, setSearchValue] = useState("");
 
     const debouncedSearch = useDebounce(searchValue);
 
     const { data, loading } = useFetchData<NewsType>(`http://hn.algolia.com/api/v1/search?query=${debouncedSearch}`);
+
+    useEffect(() => {
+        document.title = "Hacker News | Unity Internet Private Limited";
+    }, []);
 
     return (
         <div className="font-sans pb-10">

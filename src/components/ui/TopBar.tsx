@@ -72,7 +72,7 @@ const TopBar = ({ searchValue, setSearchValue } : Props) => {
                             display: { xs: "none", sm: "block" },
                         }}
                     >
-                        Hacker News
+                        Tech News
                     </Typography>
                     <Search>
                         <SearchIconWrapper>
