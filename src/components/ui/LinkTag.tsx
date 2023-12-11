@@ -17,7 +17,7 @@ const LinkTag: React.FC<Props> = ({ url, text, Icon, className }: Props): React.
     return (
         <Link
             to={url}
-            target={(url && url.includes("www")) ? "_blank" : "_self"}
+            target={(url && (url.includes("www") || url.startsWith("https"))) ? "_blank" : "_self"}
             className={`px-3 py-1 rounded-full flex gap-2 items-center justify-between font-mono tracking-widest ${className}`}
         >
             <Icon fontSize="small" />
