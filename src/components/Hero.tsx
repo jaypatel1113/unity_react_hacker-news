@@ -5,6 +5,7 @@ import { useDebounce } from "../hooks/useDebounce";
 import { useFetchData } from "../hooks/useFetch";
 import TopBar from "./ui/TopBar";
 import ImgMediaCard from "./ui/Card";
+import Loader from "./loaders/Loader";
 
 const HeroSection = () => {
     const [searchValue, setSearchValue] = useState("");
@@ -20,9 +21,9 @@ const HeroSection = () => {
     return (
         <div className="font-sans pb-10">
             <TopBar searchValue={searchValue} setSearchValue={setSearchValue} />
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 pt-20 gap-x-5 gap-y-5 md:gap-y-10">
+            <div className="relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 pt-20 gap-x-5 gap-y-5 md:gap-y-10 min-h-[calc(100vh-40px)]">
             {
-                loading ? <>Loading...</> : data?.hits.map((hit) =>
+                loading ? <Loader message="Fetching API" /> : data?.hits.map((hit) =>
                     hit.title ? <ImgMediaCard hit={hit} key={hit.objectID} /> : null
                 )
             }

@@ -7,6 +7,7 @@ import { useFetchData } from "../hooks/useFetch";
 import Comments from "./Comments";
 import Button from "./ui/Button";
 import Label from "./ui/Label";
+import Loader from "./loaders/Loader";
 
 
 const PostList: React.FC = (): React.ReactNode => {
@@ -29,7 +30,7 @@ const PostList: React.FC = (): React.ReactNode => {
     }, [data]);
 
     if(loading) {
-        return <>Loading....</>
+        return  <Loader message="Fetching API" />
     }
 
     
