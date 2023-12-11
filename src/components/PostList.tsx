@@ -17,6 +17,15 @@ const PostList: React.FC = (): React.ReactNode => {
         setVisibleComments(visibleComments + 5);
     };
 
+    useEffect(() => {
+        if(loading) {
+            document.title = "Loading...";
+        }
+        else if (data && data.title) {
+            document.title = data.title;
+        }
+    }, [data]);
+
     if(loading) {
         return <>Loading....</>
     }
