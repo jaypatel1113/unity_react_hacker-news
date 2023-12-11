@@ -88,7 +88,7 @@ const PostList: React.FC = (): React.ReactNode => {
 
     
     if (error) {
-        return <>Error: {error.message} Status: {error.status}</>; // Display error message
+        return <>Error: {error.message} Status: {error.status}</>;
     }
 
     return (
