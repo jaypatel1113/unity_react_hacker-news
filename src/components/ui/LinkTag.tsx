@@ -3,7 +3,7 @@ import { SvgIconTypeMap } from "@mui/material";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 type Props = {
-    url: string;
+    url?: string;
     text: string;
     className: string;
     Icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
@@ -12,10 +12,12 @@ type Props = {
 }
 
 const LinkTag: React.FC<Props> = ({ url, text, Icon, className }: Props): React.ReactNode => {
+    if(!url) return <div></div>
+    
     return (
         <Link
             to={url}
-            target={url.includes("www") ? "_blank" : "_self"}
+            target={(url && url.includes("www")) ? "_blank" : "_self"}
             className={`px-3 py-1 rounded-full flex gap-2 items-center justify-between font-mono tracking-widest ${className}`}
         >
             <Icon fontSize="small" />

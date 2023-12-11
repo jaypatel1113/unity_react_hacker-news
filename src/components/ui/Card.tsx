@@ -37,16 +37,16 @@ export default function ImgMediaCard({hit}: Props) {
             </CardContent>
             <CardActions sx={{display: "flex", justifyContent: "space-between"}}>
                 <LinkTag 
-                    url={hit.url} 
-                    text={"View"} 
-                    Icon={LaunchIcon} 
-                    className={"bg-[#e5eeff] text-[#3fa0ff]"}
-                />
-                <LinkTag 
                     url={`/${hit.objectID}`} 
                     text={"Comments"} 
                     Icon={CommentIcon} 
                     className={"bg-[#f7eee3] text-[#ff956c]"}
+                />
+                <LinkTag 
+                    url={hit.url} 
+                    text={"View"} 
+                    Icon={LaunchIcon} 
+                    className={"bg-[#e5eeff] text-[#3fa0ff]"}
                 />
             </CardActions>
 
@@ -57,6 +57,7 @@ export default function ImgMediaCard({hit}: Props) {
                     <Label 
                         text={tag} 
                         className="bg-[#c1ebee96] text-[#01c4d4] px-3 text-[10px] tracking-tighter " 
+                        key={tag}
                     />
             )}
             </div>

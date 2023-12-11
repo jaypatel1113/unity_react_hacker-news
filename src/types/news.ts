@@ -4,7 +4,7 @@ export type HitsType = {
     created_at_i: number,
     title: string,
     updated_at: string,
-    url: string,
+    url?: string,
     _tags: string[],
     objectID: string,
 }
