@@ -8,6 +8,7 @@ import Comments from "./Comments";
 import Button from "./ui/Button";
 import Label from "./ui/Label";
 import Loader from "./loaders/Loader";
+import ErrorPage from "./ErrorPage";
 
 
 const PostList: React.FC = (): React.ReactNode => {
@@ -26,8 +27,10 @@ const PostList: React.FC = (): React.ReactNode => {
         }
         else if (data && data.title) {
             document.title = data.title;
+        } else {
+            document.title = "Error encountered"
         }
-    }, [data]);
+    }, [data, loading]);
 
     if(loading) {
         return  <Loader message="Fetching API" />
@@ -35,7 +38,7 @@ const PostList: React.FC = (): React.ReactNode => {
 
     
     if (error) {
-        return <>Error: {error.message} Status: {error.status}</>;
+        return <ErrorPage error={error} />;
     }
 
     return (
