@@ -14,7 +14,7 @@ const HeroSection = () => {
     const [visibleNews, setVisibleNews] = useState(6);
 
     const loadMoreNews = () => {
-        setVisibleNews(prev => prev + 7);
+        setVisibleNews(prev => prev + 6);
     };
 
     const debouncedSearch = useDebounce(searchValue);
@@ -36,7 +36,7 @@ const HeroSection = () => {
                 }
             </div>
             {data?.hits && visibleNews < data.hits.length && (
-                <Button fn={loadMoreNews} total={data.hits.length} visible={visibleNews+1} />
+                <Button fn={loadMoreNews} total={data.hits.length} visible={visibleNews} />
             )}
         </div>
     );
